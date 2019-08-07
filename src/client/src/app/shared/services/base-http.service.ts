@@ -12,7 +12,7 @@ export abstract class BaseHttpService {
     apiUrl: string = ''
   ) {
     if (apiUrl) {
-      this.apiUrl = apiUrl;
+      this.apiUrl = apiUrl || this.apiUrl;
     }
   }
 }

@@ -47,8 +47,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let item of listOfDisplayData">
-    <td *ngIf="hasIdNavigation"
-        nzLeft="0px" class="cursor-pointer"
+    <td *ngIf="hasIdNavigation" nzLeft="0px" class="cursor-pointer"
         [routerLink]="[item['id']]">
       <i class="icon-share-alt"></i>
     </td>
@@ -59,18 +58,10 @@
           <ng-container *ngSwitchCase="'date'">{{item[settingItem.id] | date: 'shortDate'}}</ng-container>
           <ng-container *ngSwitchCase="'rounded-number'">{{item[settingItem.id] | numberToFixed: 2}}</ng-container>
           <ng-container *ngSwitchCase="'diff'">
-            <ng-container *ngIf="item[settingItem.id]>0">
-                <div class="text-success">
-                    <i nz-icon nzType="caret-up" nzTheme="outline"></i>
-                    {{item[settingItem.id] | numberToFixed: 2}}
-                </div>
-            </ng-container>
-            <ng-container *ngIf="item[settingItem.id]<0">
-                <div class="text-danger">
-                    <i nz-icon nzType="caret-down" nzTheme="outline"></i>
-                    {{item[settingItem.id] | numberToFixed: 2}}
-                </div>
-            </ng-container>
+            <div *ngIf="item[settingItem.id] >= 0" class="text-{{item[settingItem.id] >= 0 ? 'success' : 'danger'}}">
+              <i nz-icon nzType="caret-{{item[settingItem.id] >= 0 ? 'up' : 'down'}}" nzTheme="outline"></i>
+              {{item[settingItem.id] | numberToFixed: 2}}
+            </div>
           </ng-container>
           <ng-container *ngSwitchCase="'rubles'">
             {{item[settingItem.id] | currency:'RUB':'symbol':'4.2-2':'ru'}}

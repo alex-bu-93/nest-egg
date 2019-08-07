@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable }       from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Stock } from '@shared/models/stock.model';
+import { Stock }            from '@shared/models/stock.model';
+import { Observable }       from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
